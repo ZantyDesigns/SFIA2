@@ -1,105 +1,50 @@
-# QAC SFIA2 Project
+# **SFIA2 Individual Project - Flask Application**
 
-This application is a simple [Flask application](https://flask.palletsprojects.com/en/1.1.x/quickstart/#a-minimal-application), ready to be deployed, for your SFIA2 project.
+### **_Resources_**
+ 
+ 
+## Contents
+* [Project Brief](#project-brief)
+* [Project Objectives](#project-objectives)
+* [Project Outcome](#project-outcome)
+* [Project Management](#project-management)
+* [Deployment](#deployment)
+* [Issues](#issues)
+* [Future Improvements](#future-improvements)
 
-The following information should be everything you need to complete the project.
+## Project Brief
 
-## Brief
 
-The application must:
+## Project Objectives
 
-- Be deployed to a **Virtual Machine for testing**
-- Be deployed in a **managed Kubernetes Cluster for production**
-- Make use of a **managed Database solution**
 
-## Application
+## Project Outcome
 
-The application is a Flask application running in **2 micro-services** (*frontend* and *backend*).  
 
-The database directory is available should you: 
-  - want to use a MySQL container for your database at any point, *or*
-  - want to make use of the `Create.sql` file to **set up and pre-populate your database**.
+## Project Management
 
-The application works by:
-1. The frontend service making a GET request to the backend service. 
-2. The backend service using a database connection to query the database and return a result.
-3. The frontend service serving up a simple HTML (`index.html`) to display the result.
+## Jira & Sprints
+A kanban board was created using Jira to plan user stories and tasks in advance to track project development progress and stages. User stories were created to imitate scenarios of how the end user would be using the functionality of the web application and their expected outcome e.g. User can add new bike parks. Developement tasks were then generated for each user story to breakdown how these features were going to be implemented. These tasks and user stories were collectively added to a sprint which gave time contraints to each implementation. This allowed for efficient time management and the ability to visualize the level of importance for each task. 
+![jira]()
 
-### Database Connection
+## Risk Assessment
 
-The database connection is handled in the `./backend/application/__init__.py` file.
+## Jenkins Pipeline
 
-A typical Database URI follows the form:
+## Deployment
+### **Docker**
 
-```
-mysql+pymysql://[db-user]:[db-password]@[db-host]/[db-name]
-```
+### **Jenkins**
 
-An example of this would be:
+### **Ansible**
 
-```
-mysql+pymysql://root:password@mysql:3306/orders
-```
+## Issues
 
-### Environment Variables
 
-The application makes use of **2 environment variables**:
+## Future Improvements
 
-- `DATABASE_URI`: as described above
-- `SECRET_KEY`: any *random string* will work here
 
-### Running a Flask Application
-
-Typically, to run a Flask application, you would:
-
-1. Install the pip dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-2. Run the application:
-
-```
-python3 app.py
-```
-
-![app-diagram](https://i.imgur.com/wnbDazy.png)
-
-## Testing
-
-Unit Tests have been included for both the frontend and backend services.
-
-To test the backend service, you will need two things:
-
-1. A database called `testdb`
-2. A `TEST_DATABASE_URI` environment variable, which contains the database connection for the `testdb` database.
-
-You can run the tests using the command:
-
-```
-pytest
-```
-
-To generate a coverage report, you will need to run:
-
-```
-pytest --cov application
-```
-
-## Infrastructure
-
-The **Minimum Viable Product** for this project should at least demonstrate the following infrastructure diagram:
-
-![mvp-diagram](https://i.imgur.com/i5qfOas.png)
-
-**Stretch goals** for this project include:
-
-- Using **Terraform to configure the Kubernetes Cluster** for production 
-- Using **Terraform and Ansible to configure the Test VM**
-
-Completing the stretch goals should yield an infrastructure diagram similar to the following:
-
-![stretch-digram](https://i.imgur.com/Q5zljVl.png)
-
-**Good luck!**
+## Author
+* Jordan Hamilton
+* QA Cloud Native Consultant
+* JHamilton@QA.com
