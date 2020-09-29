@@ -1,18 +1,39 @@
 version: "3.7"
 services:
-  chaperoo-frontend:
-    image: jhamilton31/chaperoo-frontend:${app_version}
-    build: .
+  frontend:
+    image: jhamilton31/frontend:${app_version}
+    build: /frontend
+    ports:
+      - target: 5000
+        published: 5000
+    depends_on:
+      - nginx
+
+  backend:
+    image: jhamilton31/backend:${app_version}
+    build: /backend
+    ports:
+      - target: 5001
+        published: 5001
+    depends_on:
+      - database
+
+  nginx:
+    image: nginx
     ports:
       - target: 80
         published: 80
+    volumes:
+      - type: bind
+        source: ./nginx/nginx.conf
+        target: /etc/nginx/nginx.conf
     depends_on:
-      - chaperoo-service
-  chaperoo-service:
-    image: jordangrindrod/chaperoo-service
-    depends_on:
-      - chaperoo-db
-  chaperoo-db:
-    image: jordangrindrod/chaperoo-db
+      - frontend
+
+  database:
+    image: jhamilton31/database
+    build: /database
     environment:
-      - MYSQL_ROOT_PASSWORD=${DB_PASSWORD}
+      - MYSQL_ROOT_PASSWORD=password
+      - DATABASE_URI=mysql+pymysql://root:password@database:3306/users
+      - SECRET_KEY=password
