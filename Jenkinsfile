@@ -20,7 +20,7 @@ pipeline{
                 }
             }
 
-            stage('Tag & Push Image'){
+            stage('Set Docker Credentials'){
                    steps{
                        script{
                            if (env.rollback == 'false'){
