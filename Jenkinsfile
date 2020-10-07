@@ -9,13 +9,13 @@ pipeline{
                 steps{
                     script{
                             if (env.rollback == 'false'){
-                            withCredentials([string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPass'), string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'SECRET_KEY', variable: 'SECRETKEY')]) {
-                                // some block
+                                 withCredentials([string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPass'), string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'SECRET_KEY', variable: 'SECRETKEY')]) {
+                                        sh '''
+                                           export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} DATABASE_URI=${DATABASE_URI} SECRET_KEY${SECRET_KEY}
+                                           docker-compose build
+                                           '''
+                                 }
                             }
-                            sh '''
-                            docker-compose build
-                            '''
-                        }
                     }
                 }
             }
@@ -31,7 +31,6 @@ pipeline{
                     }
                 }
             }
-
             stage('Deploy App'){
                 steps{
                     sh "docker-compose pull && docker-compose up -d"
