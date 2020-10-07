@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 services:
   frontend:
     image: jhamilton31/frontend:${app_version}
@@ -7,7 +7,7 @@ services:
       - target: 5000
         published: 5000
     depends_on:
-      - nginx
+      - backend
 
   backend:
     image: jhamilton31/backend:${app_version}
@@ -15,8 +15,10 @@ services:
     ports:
       - target: 5001
         published: 5001
-    depends_on:
-      - database
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+      - DATABASE_URI=${DATABASE_URI}
+      - SECRET_KEY=${SECRET_KEY}
 
   nginx:
     image: nginx
@@ -29,11 +31,3 @@ services:
         target: /etc/nginx/nginx.conf
     depends_on:
       - frontend
-
-  database:
-    image: jhamilton31/database
-    build: /database
-    environment:
-      - MYSQL_ROOT_PASSWORD=password
-      - DATABASE_URI=mysql+pymysql://root:password@database:3306/users
-      - SECRET_KEY=password
