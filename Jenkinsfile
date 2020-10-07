@@ -6,14 +6,6 @@ pipeline{
         }
 
        stages{
-         stage('Clone repo'){
-                               steps{
-                                   sh '''
-                                   git clone https://github.com/ZantyDesigns/SFIA2.git
-                                   '''
-                               }
-               }
-
             stage('Build Image'){
                 steps{
                     script{
