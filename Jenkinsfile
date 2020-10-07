@@ -24,9 +24,10 @@ pipeline{
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
                                 sh '''
+                                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
                                 docker-compose push
+                                }
                                 '''
                             }
                         }
