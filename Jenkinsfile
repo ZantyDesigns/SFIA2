@@ -20,6 +20,7 @@ pipeline{
                     }
                 }
             }
+          }
 
             stage('Tag & Push Image'){
                 steps{
