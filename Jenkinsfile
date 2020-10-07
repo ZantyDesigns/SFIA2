@@ -11,7 +11,7 @@ pipeline{
                             if (env.rollback == 'false'){
                             sh '''
                             ls -al
-                            cd sfia2
+                            cd frontend
                             '''
                             image = docker.build('jhamilton31/frontend')
                         }
