@@ -15,6 +15,7 @@ pipeline{
                                            export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} DATABASE_URI=${DATABASE_URI} SECRET_KEY=${SECRET_KEY}
                                            docker-compose build
                                            '''
+                                       }
                                  }
                             }
                     }
