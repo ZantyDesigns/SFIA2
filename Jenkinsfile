@@ -9,7 +9,8 @@ pipeline{
                 steps{
                     script{
                             if (env.rollback == 'false'){
-                            image = docker.build('jhamilton31/sfia2')
+                            image = docker.build('jhamilton31/sfia2/frontend')
+                            image = docker.build('jhamilton31/sfia2/backend')
                         }
                     }
                 }
