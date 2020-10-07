@@ -28,14 +28,15 @@ pipeline{
                                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials')
                                 docker-compose push
                                 '''
-                            }
                         }
                     }
-                }
+               }
             }
+
             stage('Deploy App'){
                 steps{
                     sh "docker-compose pull && docker-compose up -d"
                 }
             }
         }
+   }
