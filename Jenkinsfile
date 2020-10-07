@@ -21,14 +21,20 @@ pipeline{
             }
 
             stage('Tag & Push Image'){
+                   steps{
+                       script{
+                           if (env.rollback == 'false'){
+                           withCredentials([usernameColonPassword(credentialsId: 'DOCKER_LOGIN', variable: 'DOCKER_LOGIN')]) {
+                       }
+            }
+
+            stage('Tag & Push Image'){
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                             withCredentials([usernameColonPassword(credentialsId: 'DOCKER_LOGIN', variable: 'DOCKER_LOGIN')]) {
-                                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
-                                      image.push("${env.app_version}")
-                                 }
-                             }
+                            docker.withRegistry('https://registry.hub.docker.com', 'DOCKER_LOGIN'){
+                                image.push("${env.app_version}")
+                            }
                         }
                     }
                 }
