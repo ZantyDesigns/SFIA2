@@ -5,14 +5,13 @@ pipeline{
             rollback = 'false'
         }
 
-       stages{
+        stages{
             stage('Build Image'){
                 steps{
                     script{
                             if (env.rollback == 'false'){
                                  withCredentials([string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPass'), string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'SECRET_KEY', variable: 'SECRETKEY')]) {
                                         sh '''
-                                           cd SFIA2
                                            export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} DATABASE_URI=${DATABASE_URI} SECRET_KEY=${SECRET_KEY}
                                            docker-compose build
                                            '''
@@ -26,24 +25,17 @@ pipeline{
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                                    sh '''
-                                    cd SFIA2
-                                    docker.withRegistry("https://registry.hub.docker.com", "docker-hub-credentials"){
-                                    docker push jhamilton31/backend
-                                    }
-                                   '''
+                                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
+                                    image.push("${env.app_version}")
                                 }
                         }
                     }
                }
-
+            }
 
             stage('Deploy App'){
                 steps{
-                    sh '''
-                    cd SFIA2
-                    docker-compose pull && docker-compose up -d
-                    '''
+                    sh "docker-compose pull && docker-compose up -d"
                 }
             }
         }
