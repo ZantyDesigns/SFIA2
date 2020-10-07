@@ -27,7 +27,10 @@ pipeline{
                     script{
                         if (env.rollback == 'false'){
                                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
-                                    image.push("${env.app_version}")
+                                    sh '''
+                                    cd SFIA2
+                                    docker push jhamilton31/backend
+                                    '''
                                 }
                         }
                     }
@@ -36,7 +39,10 @@ pipeline{
 
             stage('Deploy App'){
                 steps{
-                    sh "docker-compose pull && docker-compose up -d"
+                    sh '''
+                    cd SFIA2
+                    docker-compose pull && docker-compose up -d
+                    '''
                 }
             }
         }
