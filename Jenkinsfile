@@ -10,9 +10,8 @@ pipeline{
                     script{
                             if (env.rollback == 'false'){
                             sh '''
-                            ls -al
-                            docker build -f /frontend/Dockerfile .
                             '''
+                            image = docker.build('jhamilton31/frontend')
                         }
                     }
                 }
