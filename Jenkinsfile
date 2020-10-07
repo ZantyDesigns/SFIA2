@@ -9,15 +9,17 @@ pipeline{
                 steps{
                     script{
                             if (env.rollback == 'false'){
+                            withCredentials([string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPass'), string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'SECRET_KEY', variable: 'SECRETKEY')]) {
+                                // some block
+                            }
                             sh '''
-                            export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD} DATABASE_URI=${DATABASE_URI} SECRET_KEY${SECRET_KEY}
-                            sudo -n -E "MYSQL_ROOT_PASSWORD=password" "DATABASE_URI=mysql+pymysql://admin:password@test-db.c0oxn6eqdeoq.eu-west-2.rds.amazonaws.com:3306/users" "SECRET_KEY=password" docker-compose up -d --build
+                            docker-compose build
                             '''
-
                         }
                     }
                 }
             }
+
             stage('Tag & Push Image'){
                 steps{
                     script{
@@ -29,6 +31,7 @@ pipeline{
                     }
                 }
             }
+
             stage('Deploy App'){
                 steps{
                     sh "docker-compose pull && docker-compose up -d"
