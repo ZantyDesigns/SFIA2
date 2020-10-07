@@ -26,11 +26,15 @@ pipeline{
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                                docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
+                                {
                                     sh '''
+
                                     cd SFIA2
+                                    docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
                                     docker push jhamilton31/backend
-                                    '''
+                                    }
+                                   '''
+
                                 }
                         }
                     }
