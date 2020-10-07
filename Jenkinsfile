@@ -26,6 +26,9 @@ pipeline{
                            if (env.rollback == 'false'){
                            withCredentials([usernameColonPassword(credentialsId: 'DOCKER_LOGIN', variable: 'DOCKER_LOGIN')]) {
                        }
+                     }
+                  }
+               }
             }
 
             stage('Tag & Push Image'){
