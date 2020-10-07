@@ -4,17 +4,16 @@ pipeline{
             app_version = 'v2'
             rollback = 'false'
         }
-        stages{
-            stage('Clone repo'){
-                     steps{
-                         sh '''
-                         ssh ubuntu@ip-172-31-14-220
-                         git clone https://github.com/ZantyDesigns/SFIA2.git
-                         '''
-                     }
-            }
 
-      /*
+       stages{
+         stage('Clone repo'){
+                               steps{
+                                   sh '''
+                                   git clone https://github.com/ZantyDesigns/SFIA2.git
+                                   '''
+                               }
+               }
+
             stage('Build Image'){
                 steps{
                     script{
@@ -35,27 +34,18 @@ pipeline{
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                                sh '''
-                                cd SFIA2
-
-                                '''
                                 docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
                                     image.push("${env.app_version}")
                                 }
-
                         }
                     }
                }
             }
-*/
+
             stage('Deploy App'){
                 steps{
-                    sh '''
-                    ssh ubuntu@ip-172-31-14-220
-                    cd SFIA2
-                    docker-compose up -d
-                    '''
+                    sh "docker-compose pull && docker-compose up -d"
                 }
             }
-         }
+        }
    }
