@@ -20,22 +20,11 @@ pipeline{
                 }
             }
 
-            stage('Set Docker Credentials'){
-                   steps{
-                       script{
-                           if (env.rollback == 'false'){
-                           withCredentials([usernameColonPassword(credentialsId: 'DOCKER_LOGIN', variable: 'DOCKER_LOGIN')]) {
-                       }
-                     }
-                  }
-               }
-            }
-
             stage('Tag & Push Image'){
                 steps{
                     script{
                         if (env.rollback == 'false'){
-                            docker.withRegistry('https://registry.hub.docker.com', 'DOCKER_LOGIN'){
+                            docker.withRegistry('https://registry.hub.docker.com', 'docker-hub-credentials'){
                                 image.push("${env.app_version}")
                             }
                         }
