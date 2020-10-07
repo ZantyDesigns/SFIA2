@@ -8,7 +8,7 @@ pipeline{
             stage('Clone repo'){
                      steps{
                          sh '''
-                         ssh -i ubuntu@ip-172-31-14-220
+                         ssh ubuntu@ip-172-31-14-220
                          git clone https://github.com/ZantyDesigns/SFIA2.git
                          '''
                      }
@@ -51,7 +51,7 @@ pipeline{
             stage('Deploy App'){
                 steps{
                     sh '''
-                    ssh -i ubuntu@ip-172-31-14-220
+                    ssh ubuntu@ip-172-31-14-220
                     cd SFIA2
                     docker-compose up -d
                     '''
