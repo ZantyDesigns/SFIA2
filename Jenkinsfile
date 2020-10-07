@@ -9,7 +9,10 @@ pipeline{
                 steps{
                     script{
                             if (env.rollback == 'false'){
-                            sh 'cd /sfia2'
+                            sh '''
+                            ls -al
+                            cd sfia2
+                            '''
                             image = docker.build('jhamilton31/frontend')
                         }
                     }
