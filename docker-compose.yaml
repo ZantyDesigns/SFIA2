@@ -1,8 +1,8 @@
 version: "3.8"
 services:
   frontend:
+    build: ./frontend
     image: jhamilton31/frontend:${app_version}
-    build: /frontend
     ports:
       - target: 5000
         published: 5000
@@ -10,8 +10,8 @@ services:
       - backend
 
   backend:
+    build: ./backend
     image: jhamilton31/backend:${app_version}
-    build: /backend
     ports:
       - target: 5001
         published: 5001
