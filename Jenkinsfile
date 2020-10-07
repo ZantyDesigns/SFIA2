@@ -20,7 +20,7 @@ pipeline{
                     }
                 }
             }
-          }
+
 
             stage('Tag & Push Image'){
                 steps{
@@ -39,5 +39,5 @@ pipeline{
                     sh "docker-compose pull && docker-compose up -d"
                 }
             }
-        }
-   }
+       }
+}
