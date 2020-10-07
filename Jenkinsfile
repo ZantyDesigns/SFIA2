@@ -10,7 +10,7 @@ pipeline{
                     script{
                             if (env.rollback == 'false'){
                             sh '''
-                            docker-compose -d build .
+                            docker-compose -d --build .
                             '''
 
                         }
