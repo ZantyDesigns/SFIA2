@@ -4,16 +4,16 @@ pipeline{
             app_version = 'v2'
             rollback = 'false'
         }
+        stages{
+            stage('Clone repo'){
+                     steps{
+                         sh '''
+                         git clone https://github.com/ZantyDesigns/SFIA2.git
+                         '''
+                     }
+            }
 
-        stage('Clone repo'){
-                        steps{
-                            sh '''
-                            git clone https://github.com/ZantyDesigns/SFIA2.git
-                            '''
-                        }
-        }
-
-      /*  stages{
+      /*
             stage('Build Image'){
                 steps{
                     script{
@@ -55,4 +55,5 @@ pipeline{
                     '''
                 }
             }
+         }
    }
