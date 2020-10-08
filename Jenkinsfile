@@ -9,10 +9,10 @@
                     steps{
                         script{
                                 if (env.rollback == 'false'){
-                                     withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'instance-key', variable: 'TEST-PEM')]) {
+                                     withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'instance-key', variable: 'TEST_PEM')]) {
                                             sh '''
                                                # SSH into testing-vm
-                                               ssh -tt -o "StrictHostKeyChecking=no" -i $TEST-PEM ubuntu@ec2-35-177-75-30.eu-west-2.compute.amazonaws.com << EOF
+                                               ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-35-177-75-30.eu-west-2.compute.amazonaws.com << EOF
                                                #remove repository if exists then clone down the most recent repo
                                                #make this the active repo
                                                rm -rf SFIA2
