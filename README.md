@@ -35,11 +35,12 @@ The purpose of the project is to create a fully functional CI pipeline that util
 
 ## Jira & Sprints
 A kanban board was created using Jira to plan user stories and tasks in advance to track project development progress and stages. User stories were used to create outcomes of expected actions e.g. User can see entries for users. Technical implementation tasks were then generated for each user story to breakdown how these technologies were going to be used. The tasks and user stories were collectively added to a sprint which gave time contraints to each technical implementation. This allowed for efficient time management and the ability to visualize the level of importance for each task.
-![jira]()
+![jira](https://i.imgur.com/Ei03VVN.png)
 
 ## Risk Assessment
 
-## Jenkins Pipeline
+## CI Pipeline
+![ci](https://i.imgur.com/xCFf1bO.png)
 
 ## Deployment
 ### **Amazon Web Services(AWS)**
