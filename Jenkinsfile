@@ -54,8 +54,8 @@
                                           export DATABASE_URI=${DATABASE_URI}
                                           export SECRET_KEY=${SECRET_KEY}
                                           # test front and backend using pytest and database variables
-                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec frontend pytest  --cov-report term --cov=application
-                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec backend pytest  --cov-report term --cov=application
+                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec front pytest  --cov-report term --cov=application
+                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec back pytest  --cov-report term --cov=application
                                           exit
                                           >> EOF
                                           '''
