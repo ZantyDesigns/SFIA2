@@ -14,9 +14,11 @@
                                   # SSH into testing-vm
                                   ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-3-8-91-169.eu-west-2.compute.amazonaws.com << EOF
                                   #remove repository if exists then clone down the most recent repo
-                                  #make this the active repo
+                                  #remove the repo if it already exists
                                   rm -rf SFIA2
+                                  #clone most recent repo
                                   git clone https://github.com/ZantyDesigns/SFIA2.git
+                                  #make active repo
                                   cd SFIA2
                                   #export database variables
                                   export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
