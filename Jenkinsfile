@@ -54,8 +54,8 @@
                                           export DATABASE_URI=${DATABASE_URI}
                                           export SECRET_KEY=${SECRET_KEY}
                                           # test front and backend using pytest and database variables
-                                          docker-compose exec -T frontend pytest --cov-report term --cov=application
-                                          docker-compose exec -T backend pytest --cov-report term --cov=application
+                                          docker-compose exec -T frontend pytest --cov application >> frontend_test.txt
+                                          docker-compose exec -T backend pytest --cov application >> backend_test.txt
                                           exit
                                           >> EOF
                                           '''
