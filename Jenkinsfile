@@ -34,5 +34,35 @@
                  }
              }
         }
+            stage('Test Build and Database'){
+                     steps{
+                         script{
+                             if (env.rollback == 'false'){
+                                  withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'TEST_PEM', variable: 'TEST_PEM')]) {
+                                       sh '''
+                                          # SSH into testing-vm
+                                          ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-3-8-91-169.eu-west-2.compute.amazonaws.com << EOF
+                                          #remove repository if exists then clone down the most recent repo
+                                          #remove the repo if it already exists
+                                          rm -rf SFIA2
+                                          #clone most recent repo
+                                          git clone https://github.com/ZantyDesigns/SFIA2.git
+                                          #make active repo
+                                          cd SFIA2
+                                          #export database variables
+                                          export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+                                          export DATABASE_URI=${DATABASE_URI}
+                                          export SECRET_KEY=${SECRET_KEY}
+                                          # test front and backend using pytest and database variables
+                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec frontend pytest  --cov-report term --cov=application
+                                          sudo -E DATABASE_URI=$DBURI SECRET_KEY=$SECRET  docker exec backend pytest  --cov-report term --cov=application
+                                          exit
+                                          >> EOF
+                                          '''
+                                  }
+                             }
+                         }
+                     }
+                }
      }
  }
