@@ -56,6 +56,7 @@
                                           # test front and backend using pytest and database variables
                                           docker-compose exec -T frontend pytest --cov application
                                           docker-compose exec -T backend pytest --cov application
+                                          exit
                                           >> EOF
                                           '''
                                   }
