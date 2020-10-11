@@ -45,15 +45,21 @@ A kanban board was created using Jira to plan user stories and tasks in advance 
 ## Deployment
 ### **Amazon Web Services(AWS)**
 
+
 ### **Docker**
+Docker provides a solution to several virtual machine limitations and issues in regards to compatibility, resource usage and emulation. Docker uses containerization to deploy several contained images within a docker container that include project dependancies and variables. It uses remote registries such as Docker Hub to store these images so that the application can be more accessible. These containers allow for the application to be reproduced and built in differing environments.
 
 ### **Jenkins**
 
+
 ### **Ansible**
 
+
 ### **Terraform**
+Although AWS includes its own GUI configuration interface when creating EC2 instances, it can sometimes become inconsitent over time and hard to maintain especially when you are using several different user groups and configuration settings for different instances. Terraform uses Infrastructure as Code which allows you to create individual, consistent configuration settings for each instance created in a time saving and efficient manner. This means that any instances can be created, managed and destroyed through the CLI using the configuration files created and the CLI. The Terraform CLI reads configuration files and provides an execution plan of changes, which can be reviewed for safety and then applied and provisioned.
 
 ### **Kubernetes**
+
 
 ## Issues
 
