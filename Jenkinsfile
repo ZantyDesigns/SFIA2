@@ -21,9 +21,9 @@
                                   #make active repo
                                   cd SFIA2
                                   #export database variables
-                                  export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-                                  export DATABASE_URI=${DATABASE_URI}
-                                  export SECRET_KEY=${SECRET_KEY}
+                                  export MYSQL_ROOT_PASSWORD=$SQLPASS
+                                  export DATABASE_URI=$DBURI
+                                  export SECRET_KEY=$SECRET
                                   # build project using docker-compose and environment variables
                                   sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS DATABASE_URI=$DBURI SECRET_KEY=$SECRET docker-compose up -d --build
                                   exit
@@ -46,10 +46,10 @@
                                   #make active repo
                                   cd SFIA2
                                   #export database variables
-                                   export MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
-                                   export DATABASE_URI=${DATABASE_URI}
-                                   export TEST_DATABASE_URI=${TEST_DATABASE_URI}
-                                   export SECRET_KEY=${SECRET_KEY}
+                                   export MYSQL_ROOT_PASSWORD=$SQLPASS
+                                   export DATABASE_URI=$DBURI
+                                   export TEST_DATABASE_URI=$TESTDBURI
+                                   export SECRET_KEY=$SECRET
                                   #test front and backend using pytest and database variables
                                   sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS TEST_DATABASE_URI=$TESTDBURI SECRET_KEY=$SECRET docker exec frontend pytest --cov-report term --cov=application
                                   sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS TEST_DATABASE_URI=$TESTDBURI SECRET_KEY=$SECRET docker exec backend pytest --cov-report term --cov=application
