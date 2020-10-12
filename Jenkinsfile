@@ -52,11 +52,11 @@
                                    export SECRET_KEY=$SECRET
                                   #test front and backend using pytest and database variables
                                   cd frontend/tests
-                                  docker-compose exec -T frontend pytest --cov=application > frontendtest.txt
+                                  sudo docker exec frontend pytest --cov application
                                   cd --
                                   cd SFIA2
                                   cd backend/tests
-                                  docker-compose exec -T backend pytest --cov=application > backendtest.txt
+                                  sudo docker exec backend pytest --cov application
                                   exit
                                   >> EOF
                                   '''
