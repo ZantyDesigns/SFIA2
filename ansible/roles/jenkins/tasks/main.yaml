@@ -9,22 +9,26 @@
     name: "openjdk-8-jdk"
     state: present
 
-- name: ensure the jenkins apt repository key is installed
+- name: Ensure the Jenkins APT repository key is installed
   apt_key: url=https://pkg.jenkins.io/debian-stable/jenkins.io.key state=present
   become: yes
 
-- name: ensure the repository is configured
+- name: Ensure the repository is configured
   apt_repository: repo='deb https://pkg.jenkins.io/debian-stable binary/' state=present
   become: yes
 
-- name: ensure jenkins is installed
+- name: Ensure Jenkins is installed
   apt: name=jenkins update_cache=yes
   become: yes
 
-- name: ensure jenkins is running
+- name: Ensure Jenkins is running
   service: name=jenkins state=started
 
-- name: print initial admin password
-  shell: cat .jenkins/secrets/initialAdminPassword
+- name: Print initial admin password
+  shell: sudo cat /var/lib/jenkins/secrets/initialAdminPassword
   changed_when: false
   register: result
+
+- name: print jenkins password
+  debug:
+    var: result.stdout

@@ -4,3 +4,9 @@
     - name: Install Jenkins
       import_role:
         name: jenkins
+
+- hosts: testvm
+  tasks:
+    - name: Install Docker
+      import_role:
+        name: testvm

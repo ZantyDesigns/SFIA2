@@ -1,0 +1,2 @@
+rdsUsername = "admin"
+rdsPassword = "password"
