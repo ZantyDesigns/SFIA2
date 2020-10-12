@@ -52,11 +52,11 @@
                                    export SECRET_KEY=$SECRET
                                   #test front and backend using pytest and database variables
                                   cd frontend/tests
-                                  sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS TEST_DATABASE_URI=$TESTDBURI SECRET_KEY=$SECRET docker exec frontend pytest --cov-report term --cov=application > frontendtest.txt
+                                  docker-compose exec -T frontend pytest --cov=application > frontendtest.txt
                                   cd --
                                   cd SFIA2
                                   cd backend/tests
-                                  sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS TEST_DATABASE_URI=$TESTDBURI SECRET_KEY=$SECRET docker exec backend pytest --cov-report term --cov=application > backendtest.txt
+                                  docker-compose exec -T backend pytest --cov=application > backendtest.txt
                                   exit
                                   >> EOF
                                   '''
