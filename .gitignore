@@ -4,3 +4,4 @@
 
 terraform/variableValues.tfvars
 kubernetes/backend.yaml
+kubernetes/variables.tf
