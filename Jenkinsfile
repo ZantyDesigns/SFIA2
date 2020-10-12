@@ -12,7 +12,7 @@
                           withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'TEST_PEM', variable: 'TEST_PEM')]) {
                                sh '''
                                   # SSH into testing-vm
-                                  ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-18-133-119-141.eu-west-2.compute.amazonaws.com << EOF
+                                  ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-18-133-184-168.eu-west-2.compute.amazonaws.com << EOF
                                   #remove repository if exists then clone down the most recent repo
                                   #remove the repo if it already exists
                                   rm -rf SFIA2
@@ -42,7 +42,7 @@
                           withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'TEST_DATABASE_URI', variable: 'TESTDBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'TEST_PEM', variable: 'TEST_PEM')]) {
                                sh '''
                                   # SSH into testing-vm
-                                  ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-18-133-119-141.eu-west-2.compute.amazonaws.com << EOF
+                                  ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-18-133-184-168.eu-west-2.compute.amazonaws.com << EOF
                                   #make active repo
                                   cd SFIA2
                                   #export database variables
