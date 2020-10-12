@@ -29,6 +29,6 @@ class TestBase(TestCase):
         db.drop_all()
 
 class TestViews(TestBase):
-        def test_db_return(self):
+    def test_db_return(self):
         response = self.client.get(url_for('get_users'))
         self.assertEqual(response.status_code, 200)
