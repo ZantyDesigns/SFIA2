@@ -1,7 +1,6 @@
 version: "3.8"
 services:
   frontend:
-    build: ./frontend
     container_name: frontend
     image: jhamilton31/frontend:latest
     ports:
@@ -11,7 +10,6 @@ services:
       - backend
 
   backend:
-    build: ./backend
     container_name: backend
     image: jhamilton31/backend:latest
     ports:
@@ -22,7 +20,6 @@ services:
       - DATABASE_URI=${DATABASE_URI}
       - TEST_DATABASE_URI=${TEST_DATABASE_URI}
       - SECRET_KEY=${SECRET_KEY}
-
 
   nginx:
     image: nginx
