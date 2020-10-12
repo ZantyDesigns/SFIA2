@@ -44,6 +44,7 @@ resource "aws_db_instance" "deploy" {
   username               = var.rdsUsername
   password               = var.rdsPassword
   parameter_group_name   = "default.mysql5.7"
+  publicly_accessible    = true
 }
 
 resource "aws_db_instance" "testdb" {
@@ -59,4 +60,5 @@ resource "aws_db_instance" "testdb" {
   username               = var.rdsUsername
   password               = var.rdsPassword
   parameter_group_name   = "default.mysql5.7"
+  publicly_accessible    = true
 }
