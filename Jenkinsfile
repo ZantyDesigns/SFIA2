@@ -9,7 +9,7 @@
              steps{
                  script{
                      if (env.rollback == 'false'){
-                          withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'docker-hub-credentials'), string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'TEST_PEM', variable: 'TEST_PEM')]) {
+                          withCredentials([string(credentialsId: 'DATABASE_URI', variable: 'DBURI'), string(credentialsId: 'MYSQL_ROOT_PASSWORD', variable: 'SQLPASS'), string(credentialsId: 'SECRET_KEY', variable: 'SECRET'), file(credentialsId: 'TEST_PEM', variable: 'TEST_PEM')]) {
                                sh '''
                                   # SSH into testing-vm
                                   ssh -tt -o "StrictHostKeyChecking=no" -i $TEST_PEM ubuntu@ec2-18-133-184-168.eu-west-2.compute.amazonaws.com << EOF

@@ -1,5 +1,6 @@
 /venv/
 **/**/__pycache__/
 **/**/.coverage
+
 terraform/variableValues.tfvars
 kubernetes/backend.yaml
