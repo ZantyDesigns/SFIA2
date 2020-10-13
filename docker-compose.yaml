@@ -3,6 +3,7 @@ services:
   frontend:
     container_name: frontend
     image: jhamilton31/frontend:latest
+    build: ./frontend
     ports:
       - target: 5000
         published: 5000
@@ -12,15 +13,28 @@ services:
   backend:
     container_name: backend
     image: jhamilton31/backend:latest
+    build: ./backend
     ports:
       - target: 5001
         published: 5001
     environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - DATABASE_URI=${DATABASE_URI}
       - TEST_DATABASE_URI=${TEST_DATABASE_URI}
       - SECRET_KEY=${SECRET_KEY}
     depends_on:
       - mysql
+
+  mysql:
+    container_name: database
+    image: jhamilton31/database:latest
+    build: ./database
+    ports:
+      - target: 3306
+        published:  3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
+
 
   nginx:
     image: nginx
