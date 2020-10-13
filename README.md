@@ -69,7 +69,7 @@ Although AWS includes its own GUI configuration interface when creating EC2 inst
 Kubernetes is a portable, open-source platform that is used to manage containerized services for automation. As we are using docker containers for our project deployment solution, we are able to use Kubernetes to deploy these containers into a cluster. A cluster contains a group of hosts that are then stored in pods which store our docker containers and images. This cluster can then configure these different hosts to deploy to a single address in order for the user to access the application that has been built.
 
 ## Issues
-* Changes to the frontend do not update through the Jenkins build but instead can be manually applied by pushing the docker images and rebuilding the Kubernetes pods within the Cluster.
+* Changes to the frontend do not update through the Jenkins build but instead can be applied by manually pushing the docker images to dockerhub and rebuilding the Kubernetes pods within the Cluster.
 * Pytest returns a failed test result. Have yet to find solution as to why the tests are failing.
 
 ## Future Improvements
