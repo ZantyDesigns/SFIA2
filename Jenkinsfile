@@ -46,10 +46,10 @@
                                   #make active repo
                                   cd SFIA2
                                   #export database variables
-                                   export MYSQL_ROOT_PASSWORD=$SQLPASS
-                                   export DATABASE_URI=$DBURI
-                                   export TEST_DATABASE_URI=$TESTDBURI
-                                   export SECRET_KEY=$SECRET
+                                  export MYSQL_ROOT_PASSWORD=$SQLPASS
+                                  export DATABASE_URI=$DBURI
+                                  export TEST_DATABASE_URI=$TESTDBURI
+                                  export SECRET_KEY=$SECRET
                                   #test front and backend using pytest and database variables
                                   cd frontend/tests
                                   docker-compose exec -T frontend pytest --cov application > frontendtest.txt
