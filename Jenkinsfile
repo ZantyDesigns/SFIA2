@@ -24,6 +24,7 @@
                                   export MYSQL_ROOT_PASSWORD=$SQLPASS
                                   export DATABASE_URI=$DBURI
                                   export SECRET_KEY=$SECRET
+                                  export TEST_DATABASE_URI=$TESTDBURI
                                   # build project using docker-compose and environment variables
                                   sudo -E MYSQL_ROOT_PASSWORD=$SQLPASS DATABASE_URI=$DBURI SECRET_KEY=$SECRET docker-compose up -d --build
                                   exit
