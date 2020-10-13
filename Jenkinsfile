@@ -57,7 +57,6 @@
                                   cd SFIA2
                                   cd backend/tests
                                   docker-compose exec -T backend pytest --cov application > backendtest.txt
-                                  exit
                                   >> EOF
                                   '''
                           }
