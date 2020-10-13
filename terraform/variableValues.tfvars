@@ -1,2 +1,0 @@
-rdsUsername = "admin"
-rdsPassword = "password"
