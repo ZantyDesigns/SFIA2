@@ -2,5 +2,5 @@
 **/**/__pycache__/
 **/**/.coverage
 
-terraform/variableValues.tfvars
-kubernetes/backend.yaml
+/terraform/variableValues.tfvars
+/kubernetes/backend.yaml
