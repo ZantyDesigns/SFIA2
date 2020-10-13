@@ -19,6 +19,14 @@ services:
       - DATABASE_URI=${DATABASE_URI}
       - TEST_DATABASE_URI=${TEST_DATABASE_URI}
       - SECRET_KEY=${SECRET_KEY}
+    depends_on:
+      - mysql
+
+  mysql:
+    image: mysql
+    build: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
 
   nginx:
     image: nginx
@@ -31,9 +39,3 @@ services:
         target: /etc/nginx/nginx.conf
     depends_on:
       - frontend
-
-  mysql:
-    image: mysql
-    build: ./database
-    environment:
-      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
