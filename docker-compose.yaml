@@ -16,7 +16,6 @@ services:
       - target: 5001
         published: 5001
     environment:
-      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - DATABASE_URI=${DATABASE_URI}
       - TEST_DATABASE_URI=${TEST_DATABASE_URI}
       - SECRET_KEY=${SECRET_KEY}
@@ -32,3 +31,9 @@ services:
         target: /etc/nginx/nginx.conf
     depends_on:
       - frontend
+
+  mysql:
+    image: mysql
+    build: ./database
+    environment:
+      MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
